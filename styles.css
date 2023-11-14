@@ -1,16 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 
 :root {
+  /* 
+  Utilização de variáveis CSS para não repetir os nomes das cores e facilitar a troca de cores caso necessário
+  */
   --cor-de-fundo: #f2f2f2;
   --cor-fonte: #35f242;
   --cor-header: #0d0d0d;
   --cor-fonte-transparente: #35f2427f;
-  --normal: 20px;
-  --large: 20px;
-  --biggest: 55px;
 }
 body {
   font-family: "Open Sans", sans-serif;
+  /* border-box para facilitar os ajustes de tamanho, faz com que sejam contados as bordas dos elementos */
   box-sizing: border-box;
   background-color: var(--cor-de-fundo);
   margin-left: 20px;
@@ -23,21 +24,20 @@ header {
   background-color: var(--cor-header);
   padding: 10px;
   padding-left: 30px;
+  /* display flex para alinhar os elementos navbar e título e colocar um espaço entre eles, muda o comportamento dos elementos afim de organiza-los unidimensionalmente*/
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: var(--large);
+  font-size: 20px;
 }
 h1 {
   margin: 0;
   color: var(--cor-fonte);
 }
-.index-paragraph,
-.index-subtitle {
+.index-content {
   text-align: center;
 }
-.index-subtitle {
-}
+
 a {
   color: var(--cor-fonte);
   text-decoration: none;
@@ -47,29 +47,31 @@ img {
   height: 300px;
   padding-top: 20px;
   border-radius: 50%;
+  /* para deixar as imagens da tela inicial em preto e branco */
+  filter: grayscale(100%);
 }
-@keyframes image-hover {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.1);
-  }
+/* para quando eu passar o mouse sobre qualquer imagem ela voltar a coloração normal (essa regra não funcionará nas outras imagens das páginas específicas dos estudantes)*/
+img:hover {
+  filter: grayscale(0%);
 }
 
 .students-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* para definir o espaço entre as colunas do display flex */
   column-gap: 100px;
   text-align: center;
 }
 .image-student-page {
   display: block;
-  margin-top: var(--normal);
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 400px;
+  height: 400px;
+  /* propriedade filter para retirar o grayscale que foi colocado nas tags img */
+  filter: grayscale(0%);
 }
 .title-student-page {
   text-align: center;
@@ -79,7 +81,7 @@ span {
 }
 table {
   margin: 0 auto;
-  font-size: var(--large);
+  font-size: 20px;
   border-collapse: collapse;
   width: 80%;
 }
@@ -88,7 +90,7 @@ td {
   text-align: center;
 }
 #table-title {
-  font-size: var(--large);
+  font-size: 20px;
   text-align: center;
   font-weight: bold;
 }
@@ -101,6 +103,36 @@ article {
   text-align: justify;
   text-indent: 5%;
   margin: 0 auto;
+  /* com valores não absolutos afim de deixar um padrão de 1 e meio em relação ao tamanho da fonte */
   line-height: 1.5;
-  font-size: var(--normal);
+  font-size: 20px;
+}
+#favoritos-main {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#favoritos-main ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+#contact-main {
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* afim de controlar o tamanho do espaço entre linhas dos elementos que não são textos necessariamente, usei row-gap */
+  row-gap: 50px;
+}
+form {
+  display: flex;
+  padding-bottom: 2%;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  background-color: var(--cor-fonte-transparente);
+  border-radius: 9%;
+  border: 1px solid black;
 }
